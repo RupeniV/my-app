@@ -15,13 +15,13 @@ node{
 	        }
 	    }
    stage('Build Docker Imager'){
-   sh 'docker build -t saidamo1/myweb:0.0.2 .'
+   sh 'docker build -t saidamo/myweb:0.0.2 .'
    }
    stage('Docker Image Push'){
    withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
    sh "docker login -u prithividocker -p ${dockerPassword}"
     }
-   sh 'docker push saidamo1/myweb:0.0.2'
+   sh 'docker push saidamo/myweb:0.0.2'
    }
    
    stage('Remove Previous Container'){
